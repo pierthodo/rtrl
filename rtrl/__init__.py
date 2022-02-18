@@ -5,7 +5,7 @@ import os
 import shutil
 import tempfile
 import time
-import datetime
+from datetime import datetime
 from os.path import exists
 from random import randrange
 from tempfile import mkdtemp
