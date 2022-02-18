@@ -5,6 +5,7 @@ import os
 import shutil
 import tempfile
 import time
+import datetime
 from os.path import exists
 from random import randrange
 from tempfile import mkdtemp
@@ -26,7 +27,9 @@ def iterate_episodes(run_cls: type = Training, checkpoint_path: str = None):
   [1] https://docs.python.org/3/howto/functional.html#generators
   """
   checkpoint_path = checkpoint_path or tempfile.mktemp("_remove_on_exit")
-  checkpoint_path = "./resources/checkpoint/"
+
+  checkpoint_path = "./resources/checkpoint/" + datetime.now().strftime("%m/%d/%Y-%H:%M:%S")
+  os.mkdir(checkpoint_path)
   try:
     if not exists(checkpoint_path):
       print("=== specification ".ljust(70, "="))
