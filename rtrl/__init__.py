@@ -26,7 +26,7 @@ def iterate_episodes(run_cls: type = Training, checkpoint_path: str = None):
   [1] https://docs.python.org/3/howto/functional.html#generators
   """
   checkpoint_path = checkpoint_path or tempfile.mktemp("_remove_on_exit")
-
+  checkpoint_path = "./resources/checkpoint/"
   try:
     if not exists(checkpoint_path):
       print("=== specification ".ljust(70, "="))
