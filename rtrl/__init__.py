@@ -27,7 +27,7 @@ def iterate_episodes(run_cls: type = Training, checkpoint_path: str = None):
   [1] https://docs.python.org/3/howto/functional.html#generators
   """
   checkpoint_path = checkpoint_path or tempfile.mktemp("_remove_on_exit")
-  tmp_dic = partial_to_dict(run_cls), indent=3, default_flow_style=False, sort_keys=False)
+  tmp_dic = partial_to_dict(run_cls)
   print(tmp_dic)
   checkpoint_path = "./resources/checkpoint/" + tmp_dic["Env"]["id"]+"/"+datetime.now().strftime("%m-%d-%Y-%H-%M-%S")
   os.mkdir(checkpoint_path)
