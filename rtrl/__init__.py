@@ -28,7 +28,10 @@ def iterate_episodes(run_cls: type = Training, checkpoint_path: str = None):
   """
   checkpoint_path = checkpoint_path or tempfile.mktemp("_remove_on_exit")
   tmp_dic = partial_to_dict(run_cls)
-  print(tmp_dic)
+  try:
+    os.mkdir("./resources/checkpoint/" + tmp_dic["Env"]["id"])
+  except:
+    print("Environment folder already exists")
   checkpoint_path = "./resources/checkpoint/" + tmp_dic["Env"]["id"]+"/"+datetime.now().strftime("%m-%d-%Y-%H-%M-%S")
   os.mkdir(checkpoint_path)
   checkpoint_path += "/store"
