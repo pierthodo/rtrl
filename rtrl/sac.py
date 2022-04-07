@@ -94,10 +94,11 @@ class Agent:
     # update actor and critic
     self.critic_optimizer.zero_grad()
     loss_critic.backward()
-    self.critic_optimizer.step()
 
     self.actor_optimizer.zero_grad()
     loss_actor.backward()
+    
+    self.critic_optimizer.step()
     self.actor_optimizer.step()
 
     # self.outputnorm.normalize(value_target, update=True)  # This is not the right place to update PopArt
