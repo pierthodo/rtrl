@@ -42,7 +42,7 @@ def collate(batch, device=None):
     # else:
     #   return torch.stack([b.contiguous().to(device) for b in batch], 0)
   elif isinstance(elem, np.ndarray):
-    return collate(tuple(torch.from_numpy(b) for b in batch), device)
+    return collate(tuple(torch.from_numpy(b).float() for b in batch), device)
   elif hasattr(elem, '__torch_tensor__'):
     return torch.stack([b.__torch_tensor__().to(device) for b in batch], 0)
   elif isinstance(elem, Sequence):
